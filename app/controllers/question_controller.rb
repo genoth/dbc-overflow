@@ -1,5 +1,6 @@
-get '/questions/new' do
-  erb :'/questions/new'
+get '/questions' do
+  @questions = Question.all
+  erb :'/questions/index'
 end
 
 post '/questions' do
@@ -10,4 +11,13 @@ post '/questions' do
     status 422
     redirect back
   end
+end
+
+get '/questions/new' do
+  erb :'/questions/new'
+end
+
+get '/questions/:id' do
+  @question = Question.find_by(id: params[:id])
+  erb :'/questions/show'
 end
