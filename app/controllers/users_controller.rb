@@ -3,8 +3,9 @@ get '/users/new' do
 end
 
 post '/users' do
-  @user = User.authenticate(params[:email], params[:username])
-  if @user
+  @user = User.new(params[:user])
+  if @user.save
+    session[:user_id] = @user.id
     redirect '/'
   else
     status 422

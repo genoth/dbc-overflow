@@ -3,14 +3,14 @@
 <form action="/users" method="POST">
   <div>
     <label for="username">Username:</label>
-    <input type="text" name="user[username]" value="@user.try(:username)">
+    <input type="text" name="user[username]" value="<%=@user.try(:username)%>">
   </div>
   <div>
     <label for="email">Email:</label>
-    <input type="email" name="user[email]" value="@user.try(:email)">
+    <input type="email" name="user[email]" value="<%=@user.try(:email)%>">
   </div>
   <div>
-    <label for="password">Passord:</label>
+    <label for="password">Password:</label>
     <input type="password" name="user[password]">
   </div>
   <div>
