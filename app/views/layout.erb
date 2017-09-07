@@ -19,7 +19,7 @@
 </head>
 <body>
   <% if logged_in? %>
-    <p id="logged_in"><br>Hello, <%= @user.username %></p>
+    <p id="logged-in"><br>Hello, <%= @user.username %></p>
   <% else %>
     <p><a href="/sessions/new">Login</a> | <a href="/users/new">Register</a></p>
   <% end %>
