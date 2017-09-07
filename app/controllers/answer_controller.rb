@@ -6,7 +6,7 @@ end
 
 
 post '/answers' do
-  answer = Answer.create(body: params[:body], question_id: params[:question_id], user_id: 1)
+  answer = Answer.create(body: params[:body], question_id: params[:question_id], user_id: current_user)
   if answer.save
     redirect "/questions/#{answer.question.id}/answers/#{answer.id}"
   else
