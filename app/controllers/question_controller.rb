@@ -3,10 +3,9 @@ get '/questions/new' do
   erb :'/questions/new'
 end
 
-
-
 post '/questions' do
-  question = Question.create(title: params[:question], body: params[:body], user_id: current_user)
+  p params[:body]
+  question = Question.create(title: params[:title], body: params[:body], user_id: current_id)
   if question.save
     redirect "/questions/#{question.id}"
   else
@@ -14,4 +13,3 @@ post '/questions' do
     redirect "/questions/new"
   end
 end
-
