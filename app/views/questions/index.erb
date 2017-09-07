@@ -1,0 +1,11 @@
+<div class="question_list">
+  <ul>
+    <% @questions.each do | question | %>
+    <ul>
+      <li><a href="/questions/<%=question.id%>"><%= question.title %></a></li>
+      <li><%= question.user.username %></li>
+      <li><%= question.votes %></li>
+    </ul>
+    <% end %>
+  </ul>
+</div>
