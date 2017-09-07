@@ -2,5 +2,5 @@ class Vote < ActiveRecord::Base
   belongs_to :user
   belongs_to :votable, polymorphic: true
 
-  validates :user_id, uniqueness: {scope: :votable_id, :votable_type, message: "You may only vote once."}
+  validates :user_id, uniqueness: {scope: :votable, message: "You may only vote once."}
 end
