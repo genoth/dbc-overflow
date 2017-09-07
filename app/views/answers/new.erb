@@ -1,8 +1,7 @@
 <div>
 
-<!-- Question goes here -->
-
-  <h1>Give an answer</h1>
+  <h1><%= @question.title%></h1>
+  <h2><%= @question.body%></h2>
 
   <form action="/answers/new" method="POST">
       <label for="body">Answer</label>

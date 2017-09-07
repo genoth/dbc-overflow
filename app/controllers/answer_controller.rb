@@ -1,0 +1,17 @@
+
+get '/questions/:id/answers/new' do
+  @question = Question.find_by(id: params[:id])
+  erb :'/answers/new'
+end
+
+
+post '/answers' do
+  answer = Answer.create(body: params[:body], user_id: current_user)
+  if answer.save
+    redirect "/questions/#{answer.question.id}/answers/#{answer.id}"
+  else
+    status 422
+    redirect "/answers/new"
+  end
+end
+

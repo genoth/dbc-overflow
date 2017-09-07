@@ -2,13 +2,12 @@
 
   <h1>Ask a question</h1>
 
-  <form action="/questions/new" method="POST">
-      <label for="title">Title</label>
-      <input type="text", name="question[title]", id="title">
-      <br>
-      <label for="body">Title</label>
-      <input type="text", name="question[body]", id="body">
-      <input type="submit" value="Submit">
+  <form action="/questtions/new" method="POST">
+  Title: <input type="text" name="title">
+    <input type="submit">
   </form>
+  <br>
+  <textarea rows="4" cols="50" name="body" form="question_form">
+  Enter question here...</textarea>
 
 </div>
