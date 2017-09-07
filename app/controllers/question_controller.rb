@@ -4,7 +4,7 @@ get '/questions/new' do
 end
 
 post '/questions' do
-  question = Question.create(title: params[:title], body: params[:body], user_id: 1)
+  question = Question.create(title: params[:title], body: params[:body], user_id: current_user)
   if question.save
     redirect "/questions/#{question.id}"
   else
