@@ -67,6 +67,13 @@
 
 <div class="question_answers">
   <h2><%= @question.answers.count %> Answers</h2>
+   <div class="best_answer">
+    <% if @question.best_answer %>
+      Best Answer: <%= @question.best_answer.body %>
+      <%= @question.best_answer.user.username %>
+      <%= @question.best_answer%>
+    <% end %>
+  </div>
 
     <% @question.answers.each do |answer|  %>
       <ul>
