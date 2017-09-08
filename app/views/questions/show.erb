@@ -64,8 +64,6 @@
 <% end %>
 </ul>
 
-</div>
-
 <div class="question_answers">
   <h2><%= @question.answers.count %> Answers</h2>
    <div class="best_answer">
@@ -82,7 +80,7 @@
 
         <tr>
           <td>
-            <form method="POST" action="/answers/<%=answer.id%>/votes">
+            <form class="answer-vote" method="POST" action="/answers/<%=answer.id%>/votes">
               <input type="hidden" name="value" value="1">
               <button type="submit" class="block fa fa-chevron-up upvote-button"></button>
             </form>
@@ -101,7 +99,7 @@
 
         <tr>
           <td>
-            <form method="POST" action="/answers/<%=answer.id%>/votes" class="inline">
+            <form class="answer-vote" method="POST" action="/answers/<%=answer.id%>/votes" class="inline">
               <input type="hidden" name="value" value="-1">
               <button type="submit" class="block fa fa-chevron-down downvote-button"></button>
             </form>
@@ -109,6 +107,9 @@
         </tr>
 
       </table>
+    </ul>
+    </div>
+  </div>
 
     <div class="answer_comments">
       <% answer.comments.each do | comment | %>
@@ -140,11 +141,12 @@
 
         </tr>
       </table>
-      </div>
+      </ul>
+    </div>
 
 
       <% end %>
-      </ul>
+
     </div>
     <% end %>
   </ul>
