@@ -5,4 +5,9 @@ class Question < ActiveRecord::Base
   belongs_to :user
 
   validates :body, :title, {presence: true}
+
+  def best_answer
+    self.answers.find_by("id = ?", self.best_answer_id)
+  end
+
 end
