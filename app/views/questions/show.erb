@@ -1,51 +1,151 @@
-<div class="question_show">
-  <h1>Question:<%= @question.title %></h1>
-  <br>
-  <%= @question.body %>
-  <br>
-  <%= @question.user.username %>
-  <br>
-  <%= @question.votes %>
-  <div class="best_answer">
+<div class="question">
+  <table>
+    <tr>
+      <td>
+        <form method="POST" action="/questions/<%=@question.id%>/votes">
+          <input type="hidden" name="value" value="1">
+          <button type="submit" class="block fa fa-chevron-up upvote-button"></button>
+        </form>
+      </td>
+      <td rowspan="3" class="item">
+        <%= @question.body %>
+        <span class="author">
+          -<%= @question.user.username %> <%= @question.created_at %>
+        </span>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="vote-count"><span class="vote-count"><%= @question.votes.sum(:value) %></span></td>
+    </tr>
+    <tr>
+      <td>
+        <form method="POST" action="/questions/<%=@question.id%>/votes" class="inline">
+          <input type="hidden" name="value" value="-1">
+          <button type="submit" class="block fa fa-chevron-down downvote-button"></button>
+        </form>
+      </td>
+    </tr>
+  </table>
+
+  <div class="question_comments">
+    <h3>Comments on this question:</h3>
+    <% @question.comments.each do | comment | %>
+    <ul>
+      <table>
+        <tr>
+          <td>
+            <form method="POST" action="/questions/<%=@question.id%>/comments/<%=comment.id%>">
+              <input type="hidden" name="value" value="1">
+              <button type="submit" class="block fa fa-chevron-up upvote-button"></button>
+            </form>
+          </td>
+          <td rowspan="3" class="comment-item"><%= comment.body %><span class="comment-author"><%= comment.user.username %> <%= comment.created_at %></span>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="vote-count"><span class="vote-count"><%= comment.votes.sum(:value) %></span></td>
+        </tr>
+
+        <tr>
+          <td>
+            <form method="POST" action="/questions/<%=@question.id%>/comments/<%=comment.id%>" class="inline">
+              <input type="hidden" name="value" value="-1">
+              <button type="submit" class="block fa fa-chevron-down downvote-button"></button>
+            </form>
+          </td>
+
+        </tr>
+      </table>
+  </ul>
+</div>
+<% end %>
+</ul>
+</div>
+</div>
+
+<div class="question_answers">
+  <h2><%= @question.answers.count %> Answers</h2>
+   <div class="best_answer">
     <% if @question.best_answer %>
       Best Answer: <%= @question.best_answer.body %>
       <%= @question.best_answer.user.username %>
-      <%= @question.best_answer.votes %>
+      <%= @question.best_answer%>
     <% end %>
   </div>
 
- <div class="question_comments">
-    <ul>
-      <% @question.comments.each do |comment| %>
+    <% @question.answers.each do |answer|  %>
       <ul>
-        <li>Comment:<%= comment.body %></li>
-        <li><%= comment.user.username %></li>
-        <li><%= comment.votes %></li>
-        <br>
+      <table>
+
+        <tr>
+          <td>
+            <form method="POST" action="/answers/<%=answer.id%>/votes">
+              <input type="hidden" name="value" value="1">
+              <button type="submit" class="block fa fa-chevron-up upvote-button"></button>
+            </form>
+          </td>
+
+          <td rowspan="3" class="answer-item">
+            <%= answer.body %>
+            <span class="answer-author">-<%= answer.user.username %> <%= answer.created_at %></span>
+          </td>
+
+        </tr>
+
+        <tr>
+          <td class="vote-count"><span class="vote-count"><%= answer.votes.sum(:value) %></span></td>
+        </tr>
+
+        <tr>
+          <td>
+            <form method="POST" action="/answers/<%=answer.id%>/votes" class="inline">
+              <input type="hidden" name="value" value="-1">
+              <button type="submit" class="block fa fa-chevron-down downvote-button"></button>
+            </form>
+          </td>
+        </tr>
+
+      </table>
+
+    <div class="answer_comments">
+      <% answer.comments.each do | comment | %>
+
+      <ul>
+        <table>
+        <tr>
+          <td>
+            <form method="POST" action="/answers/<%=answer.id%>/comments/<%=comment.id%>">
+              <input type="hidden" name="value" value="1">
+              <button type="submit" class="block fa fa-chevron-up upvote-button"></button>
+            </form>
+          </td>
+          <td rowspan="3" class="comment-item"><%= comment.body %><span class="comment-author"><%= comment.user.username %> <%= comment.created_at %></span>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="vote-count"><span class="vote-count"><%= comment.votes.sum(:value) %></span></td>
+        </tr>
+
+        <tr>
+          <td>
+            <form method="POST" action="/answers/<%=answer.id%>/comments/<%=comment.id%>" class="inline">
+              <input type="hidden" name="value" value="-1">
+              <button type="submit" class="block fa fa-chevron-down downvote-button"></button>
+            </form>
+          </td>
+
+        </tr>
+      </table>
+      </div>
+
+
+      <% end %>
       </ul>
-      <% end %>
-    </ul>
-  </div>
-  <div class="question_answers">
-    <ul>
-      <% @question.answers.each do |answer|  %>
-        <ul>
-          <li>Answer:<%= answer.body %></li>
-          <li><%= answer.user.username %></li>
-          <li><%= answer.votes %></li>
-          <br>
-        </ul>
-        <div class="answer_comments">
-        <% answer.comments.each do | comment | %>
-          <ul>
-            <li>Answer Comment: <%= comment.body %></li>
-            <li><%= comment.user.username %></li>
-            <li><%= comment.votes %></li>
-            <br>
-          </ul>
-        <% end %>
-        </div>
-      <% end %>
-    </ul>
-  </div>
+    </div>
+    <% end %>
+  </ul>
+</div>
 </div>

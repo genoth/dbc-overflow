@@ -3,6 +3,77 @@
 
 body {
   margin:2%;
+}
+
+.upvote-button {
+  flex-direction: column;
+  background-color: transparent;
+  border: none;
+  padding-top: 0px;
+  color: #8C8C8C;
+  vertical-align: sup;
+  padding: 0px 0px 0px 0px;
+}
+
+.downvote-button {
+  flex-direction: column;
+  background-color: transparent;
+  border: none;
+  color: #8C8C8C;
+  text-decoration: none;
+  vertical-align: sup;
+  padding: 0px 0px 0px 0px;
+}
+
+.vote-count {
+  font-weight: bold;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.inline {
+  display: inline;
+  text-align: center;
+}
+
+.item {
+  font-size: 1.5em;
+  vertical-align: center;
+  font-weight: bold;
+  padding-left: 2%;
+}
+
+.author {
+  font-size: .7em;
+  font-weight: normal;
+  padding-left: 1%;
+}
+
+.answer-item {
+  font-size: 1.2em;
+  vertical-align: center;
+  font-weight: bold;
+  padding-left: 2%;
+}
+
+.answer-author {
+  font-size: 1em;
+  font-weight: normal;
+  padding-left: 1%;
+}
+
+.comment-item {
+  font-size: 1em;
+  font-weight: bold;
+  padding-left: 2%;
+}
+
+.comment-author {
+  font-size: 1em;
+  font-weight: normal;
+  padding-left: 1%;
+}
+
   font-family: Helvetica;
   background-color: papayawhip;
   color: #700099;
@@ -82,4 +153,3 @@ h2 {
   margin: 0 auto;
   width: 40%;
 }
-
