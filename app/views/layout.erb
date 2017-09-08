@@ -11,13 +11,17 @@
     application.css is where you put your styles
   -->
   <link rel="stylesheet" href="/css/application.css">
-
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;lang=en" />
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="/js/application.js"></script>
 
-  <title></title>
+  <title>Fictional Animal Overflow!</title>
 </head>
+
 <body>
+  <h1>Fictional Animal Overflow</h1>
+  <img src="/dragon.png" id="dargon">
+    <br>
   <% if logged_in? %>
     <p id="logged-in"><br>Hello, <strong><%= @user.username %>!</strong> | </p><form id="logout" action="/sessions" method="POST"><input type="hidden" name="_method" value="DELETE"><input id="logout-button" type="submit" value="Logout"></form></p>
   <% else %>
