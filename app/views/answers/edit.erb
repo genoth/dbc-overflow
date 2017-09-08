@@ -1,0 +1,14 @@
+<div>
+
+  <div class="general_form">
+  <h2><%= @question.title %></h2>
+  <h3><%= @question.body %></h3>
+  <form action="/questions/<%= @question.id %>/answers/<%= @answer.id %>" method="POST">
+    <input type="hidden" name="_method" value="PUT">
+    <input type="hidden" name="answer_id" value="<%= @answer.id %>">
+      <textarea rows="4" cols="50" name="body"><%= @answer.body %></textarea>
+      <br>
+      <input type="submit" value="Submit">
+  </form>
+</div>
+</div>
