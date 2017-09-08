@@ -1,10 +1,10 @@
 <div class="question_list">
   <ul>
     <% @questions.each do | question | %>
-    <ul>
+    <ul class="each_question">
+      <li class="stats"><%= question.votes %> <%= question.answers.length %> <%= question.views %></li>
       <li><a href="/questions/<%=question.id%>"><%= question.title %></a></li>
-      <li><%= question.user.username %></li>
-      <li><%= question.votes %></li>
+      <li class="username"><%= question.updated_at %> <%= question.user.username %></li>
     </ul>
     <% end %>
   </ul>
