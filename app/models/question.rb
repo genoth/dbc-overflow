@@ -16,4 +16,11 @@ class Question < ActiveRecord::Base
     end
   end
 
+  def vote_score
+    if self.votes.length == 0
+      return 0
+    else
+      self.votes
+    end
+  end
 end

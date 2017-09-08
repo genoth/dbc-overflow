@@ -9,7 +9,7 @@
   <div class="best_answer">
     <% if @question.best_answer %>
       Best Answer: <%= @question.best_answer.body %>
-      <%= @question.best_answer.username %>
+      <%= @question.best_answer.user.username %>
       <%= @question.best_answer.votes %>
     <% end %>
   </div>
