@@ -2,9 +2,9 @@
   <table>
     <tr>
       <td>
-        <form method="POST" action="/questions/<%=@question.id%>/votes">
+        <form class="question-vote" method="POST" action="/questions/<%=@question.id%>/votes">
           <input type="hidden" name="value" value="1">
-          <button type="submit" class="block fa fa-chevron-up upvote-button"></button>
+          <button type="submit" class="qvote block fa fa-chevron-up upvote-button"></button>
         </form>
       </td>
       <td rowspan="3" class="item">
@@ -16,7 +16,7 @@
     </tr>
 
     <tr>
-      <td class="vote-count"><span class="vote-count"><%= @question.votes.sum(:value) %></span></td>
+      <td class="vote-count"><span><%= @question.votes.sum(:value) %></span></td>
     </tr>
     <tr>
       <td>
@@ -27,6 +27,7 @@
       </td>
     </tr>
   </table>
+</div>
 
   <div class="question_comments">
     <h3>Comments on this question:</h3>
@@ -62,7 +63,7 @@
 </div>
 <% end %>
 </ul>
-</div>
+
 </div>
 
 <div class="question_answers">
