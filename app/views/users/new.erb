@@ -1,21 +1,21 @@
 <h2>Register New User</h2>
 <div class="general_form"
-  <form action="/users" method="POST">
-    <div>
-      <label for="username">Username:</label>
-      <input type="text" name="user[username]" value="<%=@user.try(:  username)%>">
-    </div>
-    <div>
-      <label for="email">Email: </label>
-      <input type="email" name="user[email]" value="<%=@user.try(:email)%  >">
-    </div>
-    <div>
-      <label for="password">Password:</label>
-      <input type="password" name="user[password]">
-    </div>
-    <div>
-      <input type="submit" name="Register!">
-    </div>
+<form action="/users" method="POST">
+  <div>
+    <label for="username">Username:</label>
+    <input type="text" name="user[username]" value="<%=@user.try(:username)%>">
+  </div>
+  <div>
+    <label for="email">Email:</label>
+    <input type="email" name="user[email]" value="<%=@user.try(:email)%>">
+  </div>
+  <div>
+    <label for="password">Password:</label>
+    <input type="password" name="user[password]">
+  </div>
+  <div>
+    <input type="submit" name="Register!">
+  </div>
 
-  </form>
+</form>
 </div>

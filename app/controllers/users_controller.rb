@@ -3,7 +3,7 @@ get '/users/new' do
     status 418
     redirect '/questions'
   else
-    erb :'users/new'
+    erb :'/users/new'
   end
 end
 
@@ -14,6 +14,6 @@ post '/users' do
     redirect '/'
   else
     status 422
-    erb :'users/new'
+    erb :'/users/new'
   end
 end
