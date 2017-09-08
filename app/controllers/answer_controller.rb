@@ -1,4 +1,3 @@
-
 get '/questions/:id/answers/new' do
   @question = Question.find_by(id: params[:id])
   erb :'/answers/new'
