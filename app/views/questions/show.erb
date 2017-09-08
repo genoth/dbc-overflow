@@ -1,17 +1,24 @@
 <div class="question_show">
-  <h1><%= @question.title %></h1>
+  <h1>Question:<%= @question.title %></h1>
   <br>
   <%= @question.body %>
   <br>
   <%= @question.user.username %>
   <br>
   <%= @question.votes %>
+  <div class="best_answer">
+    <% if @question.best_answer %>
+      Best Answer: <%= @question.best_answer.body %>
+      <%= @question.best_answer.username %>
+      <%= @question.best_answer.votes %>
+    <% end %>
+  </div>
 
  <div class="question_comments">
     <ul>
       <% @question.comments.each do |comment| %>
       <ul>
-        <li><%= comment.body %></li>
+        <li>Comment:<%= comment.body %></li>
         <li><%= comment.user.username %></li>
         <li><%= comment.votes %></li>
         <br>
@@ -23,7 +30,7 @@
     <ul>
       <% @question.answers.each do |answer|  %>
         <ul>
-          <li><%= answer.body %></li>
+          <li>Answer:<%= answer.body %></li>
           <li><%= answer.user.username %></li>
           <li><%= answer.votes %></li>
           <br>
@@ -31,7 +38,7 @@
         <div class="answer_comments">
         <% answer.comments.each do | comment | %>
           <ul>
-            <li><%= comment.body %></li>
+            <li>Answer Comment: <%= comment.body %></li>
             <li><%= comment.user.username %></li>
             <li><%= comment.votes %></li>
             <br>
