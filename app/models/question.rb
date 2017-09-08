@@ -7,7 +7,13 @@ class Question < ActiveRecord::Base
   validates :body, :title, {presence: true}
 
   def best_answer
-    self.answers.find_by("id = ?", self.best_answer_id)
+    self.answers.find_by(id: self.best_answer_id)
+  end
+
+  def best_answer=(answer_id)
+    if question.user.id == current_user.id
+      self.best_answer_id = answer_id
+    end
   end
 
 end

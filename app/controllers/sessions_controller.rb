@@ -17,3 +17,7 @@ delete '/sessions' do
   session[:user_id] = nil
   redirect '/'
 end
+
+get '/session-inspector' do
+  session.inspect
+end
