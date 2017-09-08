@@ -14,6 +14,11 @@ body {
 }
 
 .stats {
+  float: left;
+  margin-right: 50px;
+}
+
+.question_title {
 
 }
 
@@ -22,5 +27,5 @@ body {
   background-color: #ccccff;
   padding: 10px;
   margin: 5px;
-
+  height: 40px;
 }

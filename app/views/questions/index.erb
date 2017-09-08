@@ -2,8 +2,8 @@
   <ul>
     <% @questions.each do | question | %>
     <ul class="each_question">
-      <li class="stats"><%= question.votes %> <%= question.answers.length %> <%= question.views %></li>
-      <li><a href="/questions/<%=question.id%>"><%= question.title %></a></li>
+      <li class="stats"><%= question.votes %> votes | <%= question.answers.length %> answers | <%= question.views %> views</li>
+      <li class="question_title"><a href="/questions/<%=question.id%>"><%= question.title %></a></li>
       <li class="username"><%= question.updated_at %> <%= question.user.username %></li>
     </ul>
     <% end %>
