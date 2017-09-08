@@ -8,8 +8,7 @@ end
 post '/questions/:question_id/comments' do
   @comment = Comment.new(
     body: params[:body],
-    user_id: 1,
-    # user_id: current_user.id,
+    user_id: current_user.id,
     commentable_type: "Question",
     commentable_id: params[:question_id]
     )
@@ -32,11 +31,9 @@ end
 post '/answers/:answer_id/comments' do
   answer = Answer.find(params[:answer_id])
   question = Question.find(answer.question_id)
-
   @comment = Comment.new(
     body: params[:body],
-    user_id: 1,
-    # user_id: current_user.id,
+    user_id: current_user.id,
     commentable_type: "Answer",
     commentable_id: params[:answer_id]
     )
