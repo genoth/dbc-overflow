@@ -71,5 +71,15 @@ h2 {
 }
 
 #logout-button {
+  background-color: #ffff99;
   text-align:  left;
 }
+
+
+
+.general_form {
+  display: block;
+  margin: 0 auto;
+  width: 40%;
+}
+

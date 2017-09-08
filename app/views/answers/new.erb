@@ -1,13 +1,13 @@
 <div>
 
-  <h1><%= @question.title%></h1>
-  <h2><%= @question.body%></h2>
-
+  <div class="general_form">
+  <h2><%= @question.title%></h2>
+  <h3><%= @question.body%></h3>
   <form action="/answers" method="POST">
     <input type="hidden" name="question_id" value="<%= @question.id %>">
-      <label for="body">Answer</label>
-      <input type="text", name="body", id="answer">
+      <textarea rows="4" cols="50" name="body" form="question_form" placeholder="Enter question here"></textarea>
+      <br>
       <input type="submit" value="Submit">
   </form>
-
+</div>
 </div>

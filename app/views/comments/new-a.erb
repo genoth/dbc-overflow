@@ -1,21 +1,20 @@
-<h1>Comment on an answer!</h1>
+<h2>Comment on an answer!</h2>
 
-<h3>Question: <%= @question.title  %></h3>
-<p> <%= @question.body %> </p>
+<div class="general_form">
+  <h3>Question: <%= @question.title  %></h3>
+  <p> <%= @question.body %> </p>
+  <p>Answer: <%= @answer.body %></p>
 
-<h3>Comment on this answer: <%= @answer.body %></h3>
+  <div>
+    <% if @errors %>
+        <%= erb :'/partials/_errors' %>
+    <% end %>
+  </div>
 
-<div>
-  <% if @errors %>
-      <%= erb :'/partials/_errors' %>
-  <% end %>
+  <form action="/answers/<%= @answer.id %>/comments" method="POST" id=  "comment_form">
+    <textarea rows="4" cols="50" name="body" form="comment_form"  placeholder="Enter comment here"></textarea>
+    <br>
+    <input type="submit" value="Comment">
+
+  </form>
 </div>
-
-<form action="/answers/<%= @answer.id %>/comments" method="POST">
-
-  <label for="comment-body">Comment</label>
-  <input id="comment-body" placeholder="Type your comment." type="text" name="body">
-
-  <input type="submit" value="Submit">
-
-</form>
