@@ -1,0 +1,22 @@
+<h1>Comment on a question!</h1>
+
+<h3>Question: <%= @question.title  %></h3>
+<p> <%= @question.body %> </p>
+
+<h3>Comment on this question: <%= @question.body %></h3>
+
+<div>
+  <% if @errors %>
+      <%= erb :'/partials/_errors' %>
+  <% end %>
+</div>
+
+<form action="/questions/<%= @question.id %>/comments" method="POST">
+
+  <label for="comment-body">Comment</label>
+  <input id="comment-body" placeholder="Type your comment." type="text" name="body">
+
+  <input type="submit" value="Comment!">
+</form>
+
+
