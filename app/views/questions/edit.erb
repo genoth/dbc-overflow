@@ -2,12 +2,16 @@
 
   <h2>Edit your question</h2>
   <div class="general_form">
-  <form action="/questions/<%= @question.id %>" method="POST">
-    <input type="hidden" name="_method" value="PUT">
-  Title: <input type="text" value="<%= @question.title %>" name="title" size= "39">
-    <input type="submit">
-  <br>
-  <textarea rows="4" cols="50" name="body"><%= @question.body %></textarea>
-  </form>
-</div>
+    <form action="/questions/<%= @question.id %>" method="POST">
+      <input type="hidden" name="_method" value="PUT">
+      Title: <input type="text" value="<%= @question.title %>" name="title" size= "39">
+      <input type="submit">
+      <br>
+      <textarea rows="4" cols="50" name="body"><%= @question.body %></textarea>
+    </form>
+    <form action="/questions/<%= @question.id %>" method="POST">
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="submit" value="Delete">
+    </form>
+  </div>
 </div>

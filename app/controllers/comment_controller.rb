@@ -1,7 +1,12 @@
 # get a form for a new comment (on a question)
 get '/questions/:question_id/comments/new' do
-  @question = Question.find(params[:question_id])
-  erb :'/comments/new-q'
+  if current_user
+    @question = Question.find(params[:question_id])
+    erb :'/comments/new-q'
+  else
+    status 403
+    redirect back
+  end
 end
 
 # send the form to create a new comment (on a question)
@@ -22,9 +27,14 @@ end
 
 # get a form for a new comment (on an answer)
 get '/answers/:answer_id/comments/new' do
-  @answer = Answer.find(params[:answer_id])
-  @question = Question.find(@answer.question_id)
-  erb :'/comments/new-a'
+  if current_user
+    @answer = Answer.find(params[:answer_id])
+    @question = Question.find(@answer.question_id)
+    erb :'/comments/new-a'
+  else
+    status 403
+    redirect back
+  end
 end
 
 # send the form to create a new comment (on an answer)

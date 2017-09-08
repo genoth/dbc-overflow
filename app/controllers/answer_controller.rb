@@ -1,6 +1,11 @@
 get '/questions/:id/answers/new' do
-  @question = Question.find_by(id: params[:id])
-  erb :'/answers/new'
+  if current_user
+    @question = Question.find_by(id: params[:id])
+    erb :'/answers/new'
+  else
+    status 403
+    redirect back
+  end
 end
 
 
@@ -15,10 +20,15 @@ post '/answers' do
 end
 
 get '/questions/:question_id/answers/:id/edit' do
-  @answer = Answer.find(params[:id])
-  @question = @answer.question
-  if @answer.user.id == current_user.id
-    erb :'/answers/edit'
+  if current_user
+    @answer = Answer.find(params[:id])
+    @question = @answer.question
+    if @answer.user.id == current_user.id
+      erb :'/answers/edit'
+    else
+      status 403
+      redirect back
+    end
   else
     status 403
     redirect back
@@ -34,5 +44,15 @@ put '/questions/:question_id/answers/:id' do
     status 403
     redirect back
   end
+end
 
+delete '/questions/:question_id/answers/:id' do
+  @answer = Answer.find(params[:id])
+  if @answer.user.id == current_user.id
+      @answer.destroy
+    redirect "/questions/#{params[:question_id]}"
+  else
+    status 403
+    redirect back
+  end
 end
