@@ -47,11 +47,29 @@ body {
 }
 
 h1 {
+  color: #cc00cc;
   text-align: center;
+  font-family: Sedgwick Ave Display;
+  font-size: 50px;
+  text-shadow: 1px 1px #700099;
 }
 
-.dargon {
-  margin: 0 auto;
+h2 {
+  color: #cc00cc;
+  text-align: center;
+  font-family: Sedgwick Ave Display;
+  text-shadow: 1px 1px #700099;
+  font-size: 40px;
+}
+
+#dargon {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   min-width: 10%;
   max-width: 90%;
+}
+
+#logout-button {
+  text-align:  left;
 }
