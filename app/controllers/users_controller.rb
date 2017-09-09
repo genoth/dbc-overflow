@@ -1,5 +1,10 @@
 get '/users/new' do
-  erb :'users/new'
+  if current_user
+    status 418
+    redirect '/questions'
+  else
+    erb :'/users/new'
+  end
 end
 
 post '/users' do
@@ -9,6 +14,6 @@ post '/users' do
     redirect '/'
   else
     status 422
-    erb :'users/new'
+    erb :'/users/new'
   end
 end
