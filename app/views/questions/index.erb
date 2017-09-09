@@ -8,8 +8,12 @@
     <ul class="each_question">
       <li class="stats"><%= question.vote_score %> votes | <%= question.answers.length %> answers | <%= question.views %> views</li>
       <li class="question_title"><a href="/questions/<%=question.id%>"><%= question.title %></a></li>
-      <li class="username"><%= (Time.now - (Time.now - question.updated_at)).ago_in_words %>  <span><%= question.user.username %></span></li>
-
+      <li class="username">
+      <%= (Time.now - (Time.now - question.updated_at)).ago_in_words %>
+      <span class="un">
+        <%= question.user.username %>
+      </span>
+      </li>
     </ul>
     <% end %>
   </ul>

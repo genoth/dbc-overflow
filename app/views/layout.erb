@@ -22,10 +22,15 @@
 <body>
   <h1>Fictional Animal Overflow!</h1>
   <img src="/dragon.png" id="dargon">
-    <br>
   <div class="nav">
     <% if logged_in? %>
-      <p id="logged-in"><br>Hello, <strong><%= @user.username %>!</strong> | </p><form id="logout" action="/sessions" method="POST"><input type="hidden" name="_method" value="DELETE"><input id="logout-button" type="submit" value="Logout"></form></p>
+      <p id="logged-in">
+      <br>Hello, <strong><%= @user.username %>!</strong> |
+      <form id="logout" action="/sessions" method="POST">
+        <input type="hidden" name="_method" value="DELETE">
+        <input id="logout-button" type="submit" value="Logout">
+      </form>
+      </p>
     <% else %>
       <p><a href="/sessions/new">Login</a> | <a href="/users/new">Register</a></p>
     <% end %>
