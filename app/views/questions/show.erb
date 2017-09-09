@@ -1,4 +1,5 @@
 <div class="question">
+  <h2> <%= @question.title %> </h2>
   <table>
     <tr>
       <td>
@@ -30,6 +31,7 @@
 </div>
 
   <div class="question_comments">
+  <a href="/questions/<%= @question.id %>/comments/new" class="comment_link">Comment</a>
     <h3>Comments on this question:</h3>
     <% @question.comments.each do | comment | %>
     <ul>
@@ -65,7 +67,7 @@
 </ul>
 
 <div class="question_answers">
-  <h2><%= @question.answers.count %> Answers</h2>
+  <h3><%= @question.answers.count %> Answers</h3>
    <div class="best_answer">
     <% if @question.best_answer %>
       Best Answer: <%= @question.best_answer.body %>
@@ -73,7 +75,7 @@
       <%= @question.best_answer%>
     <% end %>
   </div>
-
+  <a href="/questions/<%= @question.id %>/answers/new" class="comment_link">Answer this question:</a>
     <% @question.answers.each do |answer|  %>
       <ul>
       <table>
@@ -107,6 +109,7 @@
         </tr>
 
       </table>
+      <a href="/answers/<%= answer.id %>/comments/new" class="comment_link">Comment</a>
     </ul>
     </div>
   </div>

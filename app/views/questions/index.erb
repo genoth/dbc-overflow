@@ -1,5 +1,8 @@
 <div class="question_list">
   <h2>All Questions</h2>
+  <% if current_user  %>
+    <a href="/questions/new" class="content_link">Ask a new question!</a>
+  <% end %>
   <ul>
     <% @questions.each do | question | %>
     <ul class="each_question">
