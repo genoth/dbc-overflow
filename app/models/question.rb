@@ -20,7 +20,7 @@ class Question < ActiveRecord::Base
     if self.votes.length == 0
       return 0
     else
-      self.votes
+      self.votes.sum(:value)
     end
   end
 end

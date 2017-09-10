@@ -24,6 +24,8 @@ end
 
 get '/questions/:id' do
   @question = Question.find_by(id: params[:id])
+  @question.views += 1
+  @question.save
   erb :'/questions/show'
 end
 

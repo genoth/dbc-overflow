@@ -1,4 +1,5 @@
 <div class="question">
+  <h2> <%= @question.title %> </h2>
   <table>
     <tr>
       <td>
@@ -10,7 +11,8 @@
       <td rowspan="3" class="item">
         <%= @question.body %>
         <span class="author">
-          -<%= @question.user.username %> <%= @question.created_at %>
+          <%= (Time.now - (Time.now - @question.updated_at)).ago_in_words %>
+            <span class="un"><%= @question.user.username %></span>
         </span>
       </td>
     </tr>
@@ -30,6 +32,7 @@
 </div>
 
   <div class="question_comments">
+  <a href="/questions/<%= @question.id %>/comments/new" class="comment_link">Comment</a>
     <h3>Comments on this question:</h3>
     <% @question.comments.each do | comment | %>
     <ul>
@@ -41,7 +44,12 @@
               <button type="submit" class="block fa fa-chevron-up upvote-button"></button>
             </form>
           </td>
-          <td rowspan="3" class="comment-item"><%= comment.body %><span class="comment-author"><%= comment.user.username %> <%= comment.created_at %></span>
+          <td rowspan="3" class="comment-item">
+          <%= comment.body %>
+          <span class="comment-author">
+            <%= (Time.now - (Time.now - comment.updated_at)).ago_in_words %>
+            <span class="un"><%= comment.user.username %></span>
+            </span>
           </td>
         </tr>
 
@@ -65,15 +73,17 @@
 </ul>
 
 <div class="question_answers">
-  <h2><%= @question.answers.count %> Answers</h2>
+  <h3><%= @question.answers.count %> Answers</h3>
    <div class="best_answer">
     <% if @question.best_answer %>
       Best Answer: <%= @question.best_answer.body %>
-      <%= @question.best_answer.user.username %>
-      <%= @question.best_answer%>
+      <%= (Time.now - (Time.now - @question.best_answer.updated_at)).ago_in_words %>
+        <span class="un">
+          <%= @question.best_answer.user.username %>
+        </span>
     <% end %>
   </div>
-
+  <a href="/questions/<%= @question.id %>/answers/new" class="comment_link">Answer this question:</a>
     <% @question.answers.each do |answer|  %>
       <ul>
       <table>
@@ -88,7 +98,12 @@
 
           <td rowspan="3" class="answer-item">
             <%= answer.body %>
-            <span class="answer-author">-<%= answer.user.username %> <%= answer.created_at %></span>
+            <span class="answer-author">
+              <%= (Time.now - (Time.now - answer.updated_at)).ago_in_words %>
+              <span class="un">
+                  <%= answer.user.username %>
+              </span>
+            </span>
           </td>
 
         </tr>
@@ -107,6 +122,7 @@
         </tr>
 
       </table>
+      <a href="/answers/<%= answer.id %>/comments/new" class="comment_link">Comment</a>
     </ul>
     </div>
   </div>
@@ -123,7 +139,14 @@
               <button type="submit" class="block fa fa-chevron-up upvote-button"></button>
             </form>
           </td>
-          <td rowspan="3" class="comment-item"><%= comment.body %><span class="comment-author"><%= comment.user.username %> <%= comment.created_at %></span>
+          <td rowspan="3" class="comment-item">
+          <%= comment.body %>
+          <span class="comment-author">
+            <%= (Time.now - (Time.now - comment.updated_at)).ago_in_words %>
+            <span class="un">
+              <%= comment.user.username %>
+            </span>
+          </span>
           </td>
         </tr>
 

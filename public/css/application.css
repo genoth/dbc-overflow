@@ -3,6 +3,9 @@
 
 body {
   margin:2%;
+  font-family: Helvetica;
+  background-color: papayawhip;
+  color: #700099;
 }
 
 .upvote-button {
@@ -41,7 +44,10 @@ body {
   vertical-align: center;
   font-weight: bold;
   padding-left: 2%;
-}
+  border-radius: 10px;
+  background-color: #ccccff;
+  padding: 10px;
+  }
 
 .author {
   font-size: .7em;
@@ -54,6 +60,9 @@ body {
   vertical-align: center;
   font-weight: bold;
   padding-left: 2%;
+  border-radius: 10px;
+  background-color: #ccccff;
+  padding: 10px;
 }
 
 .answer-author {
@@ -66,17 +75,15 @@ body {
   font-size: 1em;
   font-weight: bold;
   padding-left: 2%;
+  border-radius: 10px;
+  background-color: #ccccff;
+  padding: 10px;
 }
 
 .comment-author {
   font-size: 1em;
   font-weight: normal;
   padding-left: 1%;
-}
-
-  font-family: Helvetica;
-  background-color: papayawhip;
-  color: #700099;
 }
 
 .question_list {
@@ -111,7 +118,7 @@ body {
   height: 40px;
 }
 
-.username span {
+.un {
   color: #cc00cc;
   font-size: 18px;
   text-shadow: 1px 1px lightyellow;
@@ -123,6 +130,7 @@ h1 {
   font-family: Sedgwick Ave Display;
   font-size: 50px;
   text-shadow: 1px 1px #700099;
+  font-style: bold;
 }
 
 h2 {
@@ -131,6 +139,23 @@ h2 {
   font-family: Sedgwick Ave Display;
   text-shadow: 1px 1px #700099;
   font-size: 40px;
+}
+
+h3 {
+  color: #cc00cc;
+  font-family: Sedgwick Ave Display;
+  text-shadow: 1px 1px #700099;
+  font-size: 25px;
+}
+
+.comment_link {
+  text-align: center;
+}
+
+.general_form {
+  display: block;
+  margin: 0 auto;
+  width: 40%;
 }
 
 #dargon {
@@ -145,12 +170,4 @@ h2 {
 #logout-button {
   background-color: #ffff99;
   text-align:  left;
-}
-
-
-
-.general_form {
-  display: block;
-  margin: 0 auto;
-  width: 40%;
 }

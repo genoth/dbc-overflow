@@ -12,7 +12,7 @@ end
 post '/answers' do
   answer = Answer.new(body: params[:body], question_id: params[:question_id], user_id: current_user.id)
   if answer.save
-    redirect "/questions/#{answer.question.id}/answers/#{answer.id}"
+    redirect "/questions/#{answer.question.id}"
   else
     status 422
     redirect back
@@ -39,7 +39,7 @@ put '/questions/:question_id/answers/:id' do
   @answer = Answer.find(params[:id])
   if @answer.user.id == current_user.id
       @answer.update_attributes(body: params[:body])
-    redirect "/questions/#{params[:question_id]}/answers/#{@answer.id}"
+    redirect "/questions/#{params[:question_id]}"
   else
     status 403
     redirect back
