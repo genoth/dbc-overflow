@@ -27,7 +27,7 @@ post '/questions/:question_id/comments/:comment.id' do
       content_type :json
       {vote_count: comment.votes.sum(:value)}.to_json
     else
-      redirect :"/questions/#{params[:question_id]}/comments/#{params[:comment_id]}"
+      redirect :"/questions/#{params[:question_id]}"
     end
   else
     if request.xhr?
@@ -47,7 +47,7 @@ post '/answers/:answer_id/votes' do
       content_type :json
       {vote_count: answer.votes.sum(:value)}.to_json
     else
-      redirect :"/answer/#{params[:answer_id]}"
+      redirect :"/questions/#{params[:question_id]}"
     end
   else
     if request.xhr?
