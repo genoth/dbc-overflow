@@ -1,6 +1,7 @@
 <div class="question">
   <h2> <%= @question.title %> </h2>
-  <table>
+
+  <table class="votable">
     <tr>
       <td>
         <form class="question-vote" method="POST" action="/questions/<%=@question.id%>/votes">
@@ -20,9 +21,10 @@
     <tr>
       <td class="vote-count"><span><%= @question.votes.sum(:value) %></span></td>
     </tr>
+
     <tr>
       <td>
-        <form method="POST" action="/questions/<%=@question.id%>/votes" class="inline">
+        <form class="question-vote inline" method="POST" action="/questions/<%=@question.id%>/votes">
           <input type="hidden" name="value" value="-1">
           <button type="submit" class="block fa fa-chevron-down downvote-button"></button>
         </form>
@@ -36,10 +38,10 @@
     <h3>Comments on this question:</h3>
     <% @question.comments.each do | comment | %>
     <ul>
-      <table>
+      <table class="votable">
         <tr>
           <td>
-            <form method="POST" action="/questions/<%=@question.id%>/comments/<%=comment.id%>">
+            <form class="q-comment-vote" method="POST" action="/questions/<%=@question.id%>/comments/<%=comment.id%>/votes">
               <input type="hidden" name="value" value="1">
               <button type="submit" class="block fa fa-chevron-up upvote-button"></button>
             </form>
@@ -59,7 +61,7 @@
 
         <tr>
           <td>
-            <form method="POST" action="/questions/<%=@question.id%>/comments/<%=comment.id%>" class="inline">
+            <form class="q-comment-vote inline" method="POST" action="/questions/<%=@question.id%>/comments/<%=comment.id%>/votes">
               <input type="hidden" name="value" value="-1">
               <button type="submit" class="block fa fa-chevron-down downvote-button"></button>
             </form>
@@ -86,7 +88,7 @@
   <a href="/questions/<%= @question.id %>/answers/new" class="comment_link">Answer this question:</a>
     <% @question.answers.each do |answer|  %>
       <ul>
-      <table>
+      <table class="votable">
 
         <tr>
           <td>
@@ -117,7 +119,7 @@
 
         <tr>
           <td>
-            <form class="answer-vote" method="POST" action="/answers/<%=answer.id%>/votes" class="inline">
+            <form class="answer-vote inline" method="POST" action="/answers/<%=answer.id%>/votes">
               <input type="hidden" name="value" value="-1">
               <button type="submit" class="block fa fa-chevron-down downvote-button"></button>
             </form>
@@ -134,10 +136,10 @@
       <% answer.comments.each do | comment | %>
 
       <ul>
-        <table>
+        <table class="votable">
         <tr>
           <td>
-            <form method="POST" action="/answers/<%=answer.id%>/comments/<%=comment.id%>">
+            <form class="a-comment-vote" method="POST" action="/answers/<%=answer.id%>/comments/<%=comment.id%>/votes">
               <input type="hidden" name="value" value="1">
               <button type="submit" class="block fa fa-chevron-up upvote-button"></button>
             </form>
@@ -159,7 +161,7 @@
 
         <tr>
           <td>
-            <form method="POST" action="/answers/<%=answer.id%>/comments/<%=comment.id%>" class="inline">
+            <form class="a-comment-vote"method="POST" action="/answers/<%=answer.id%>/comments/<%=comment.id%>">
               <input type="hidden" name="value" value="-1">
               <button type="submit" class="block fa fa-chevron-down downvote-button"></button>
             </form>

@@ -1,11 +1,14 @@
 
 
-
 body {
   margin:2%;
   font-family: Helvetica;
   background-color: papayawhip;
   color: #700099;
+}
+
+.errors {
+  color: red;
 }
 
 .upvote-button {

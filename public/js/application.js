@@ -16,6 +16,10 @@ var voteHandler = function($form, $votableDiv){
     var $voteSpan = $votableDiv.find(".vote-count")
     $voteSpan.text(serverResponse.vote_count)
   })
+  $request.fail(function(jqXHR){
+    var $appendToMe = $votableDiv.find(".votable")
+    $votableDiv.append(jqXHR.responseText)
+  })
 }
 
 var questionVoteListener = function(){
