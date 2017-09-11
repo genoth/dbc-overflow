@@ -18,7 +18,7 @@ post '/questions/:question_id/votes' do
   end
 end
 
-post '/questions/:question_id/comments/:comment.id' do
+post '/questions/:question_id/comments/:comment_id' do
   comment = Comment.find(params[:comment_id])
   vote = Vote.new(value: params[:value].to_i, user: current_user, votable: comment)
 
