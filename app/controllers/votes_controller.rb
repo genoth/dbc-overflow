@@ -11,9 +11,9 @@ post '/questions/:question_id/votes' do
     end
   else
     if request.xhr?
-      #display errors with ajax
+      erb :"/partials/_errors", layout: false, locals: {errors: ["You must be logged in to vote."]}
     else
-      #display errors with page
+      erb :"/partials/_errors", layout: false, locals: {errors: ["You must be logged in to vote."]}
     end
   end
 end
@@ -31,7 +31,7 @@ post '/questions/:question_id/comments/:comment_id' do
     end
   else
     if request.xhr?
-      #display errors with ajax
+      erb :"/partials/_errors", layout: false, locals: {errors: ["You must be logged in to vote."]}
     else
       redirect back
     end
@@ -51,9 +51,9 @@ post '/answers/:answer_id/votes' do
     end
   else
     if request.xhr?
-      #display errors with ajax
+      erb :"/partials/_errors", layout: false, locals: {errors: ["You must be logged in to vote."]}
     else
-      #display errors with page
+      erb :"/partials/_errors", layout: false, locals: {errors: ["You must be logged in to vote."]}
     end
   end
 end
@@ -71,9 +71,9 @@ post '/answers/:answer_id/comments/:comment_id' do
     end
   else
     if request.xhr?
-      #display errors with ajax
+      erb :"/partials/_errors", layout: false, locals: {errors: ["You must be logged in to vote."]}
     else
-      redirect back
+      erb :"/partials/_errors", layout: false, locals: {errors: ["You must be logged in to vote."]}
     end
   end
 
