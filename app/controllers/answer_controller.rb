@@ -35,6 +35,18 @@ get '/questions/:question_id/answers/:id/edit' do
   end
 end
 
+get '/questions/:question_id/answers/:id/best' do
+  answer = Answer.find(params[:id])
+  if answer.id == current_user.id
+    answer.question.update_attributes(best_answer_id: answer.id)
+    redirect back
+  else
+    status 401
+    redirect back
+  end
+end
+
+
 put '/questions/:question_id/answers/:id' do
   @answer = Answer.find(params[:id])
   if @answer.user.id == current_user.id

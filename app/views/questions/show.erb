@@ -103,6 +103,9 @@
               <span class="un">
                   <%= answer.user.username %>
               </span>
+              <% if current_user && @question.user.id == current_user.id %>
+                <p>      <a href="/questions/<%= @question.id %>/answers/<%= answer.id %>/best">Mark best answer</a></p>
+              <% end %>
             </span>
           </td>
 
