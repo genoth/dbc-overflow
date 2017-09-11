@@ -18,7 +18,7 @@ post '/questions/:question_id/votes' do
   end
 end
 
-post '/questions/:question_id/comments/:comment.id' do
+post '/questions/:question_id/comments/:comment_id' do
   comment = Comment.find(params[:comment_id])
   vote = Vote.new(value: params[:value].to_i, user: current_user, votable: comment)
 
@@ -27,13 +27,13 @@ post '/questions/:question_id/comments/:comment.id' do
       content_type :json
       {vote_count: comment.votes.sum(:value)}.to_json
     else
-      redirect :"/questions/#{params[:question_id]}"
+      redirect back
     end
   else
     if request.xhr?
       #display errors with ajax
     else
-      #redirect to page with errors
+      redirect back
     end
   end
 end
@@ -58,5 +58,29 @@ post '/answers/:answer_id/votes' do
   end
 end
 
-post '/answers/:answer_id/comments/:comment.id' do
+post '/answers/:answer_id/comments/:comment_id' do
+  answer = Answer.find(params[:answer_id])
+  vote = Vote.new(value: params[:value].to_i, user: current_user, votable: answer)
+
+  if vote.save
+    if request.xhr?
+      content_type :json
+      {vote_count: answer.votes.sum(:value)}.to_json
+    else
+      redirect :"/questions/#{params[:question_id]}"
+    end
+  else
+    if request.xhr?
+      #display errors with ajax
+    else
+      redirect back
+    end
+  end
+
 end
+
+
+
+
+
+
